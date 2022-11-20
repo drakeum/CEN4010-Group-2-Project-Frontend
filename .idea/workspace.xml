@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fbfe618c-098d-4f40-8985-edd8b7623d62" name="Changes" comment="moved some files, changed localhost API path to Heroku app one" />
+    <list default="true" id="fbfe618c-098d-4f40-8985-edd8b7623d62" name="Changes" comment="changed package.json file" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +45,7 @@
       <updated>1668887492758</updated>
       <workItem from="1668888141095" duration="16000" />
       <workItem from="1668888680939" duration="2781000" />
-      <workItem from="1668918079956" duration="353000" />
+      <workItem from="1668918079956" duration="1021000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1668889845518</created>
@@ -68,7 +68,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668918174893</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="moved some files, changed localhost API path to Heroku app one">
+      <created>1668918475931</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668918475931</updated>
+    </task>
+    <task id="LOCAL-00005" summary="changed package.json file">
+      <created>1668918644368</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1668918644368</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,6 +103,7 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Added Ben's edits" />
     <MESSAGE value="moved some files, changed localhost API path to Heroku app one" />
-    <option name="LAST_COMMIT_MESSAGE" value="moved some files, changed localhost API path to Heroku app one" />
+    <MESSAGE value="changed package.json file" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed package.json file" />
   </component>
 </project>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fbfe618c-098d-4f40-8985-edd8b7623d62" name="Changes" comment="changed package.json file" />
+    <list default="true" id="fbfe618c-098d-4f40-8985-edd8b7623d62" name="Changes" comment="updated proxy to try and get Heroku deployment to work" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +45,7 @@
       <updated>1668887492758</updated>
       <workItem from="1668888141095" duration="16000" />
       <workItem from="1668888680939" duration="2781000" />
-      <workItem from="1668918079956" duration="1384000" />
+      <workItem from="1668918079956" duration="1705000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1668889845518</created>
@@ -89,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668919271348</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="updated proxy to try and get Heroku deployment to work">
+      <created>1668919557123</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1668919557123</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,6 +118,7 @@
     <MESSAGE value="Added Ben's edits" />
     <MESSAGE value="moved some files, changed localhost API path to Heroku app one" />
     <MESSAGE value="changed package.json file" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed package.json file" />
+    <MESSAGE value="updated proxy to try and get Heroku deployment to work" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated proxy to try and get Heroku deployment to work" />
   </component>
 </project>

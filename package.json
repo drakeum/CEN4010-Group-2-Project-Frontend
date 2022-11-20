@@ -5,7 +5,7 @@
     "node": "16.17.1"
   },
   "private": true,
-  "proxy": "http://localhost",
+  "proxy": "https://cen4010-pms-frontend.herokuapp.com",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PMS-Frontend.iml" filepath="$PROJECT_DIR$/PMS-Frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pms-frontend.iml" filepath="$PROJECT_DIR$/pms-frontend.iml" />
     </modules>
   </component>
 </project>

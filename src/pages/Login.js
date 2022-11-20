@@ -12,7 +12,7 @@ function Login()
 
     function login(user)
     {
-        fetch("http://localhost:8080/login",
+        fetch(" https://cen4010-pms-backend.herokuapp.com/login",
             {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},

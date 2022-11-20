@@ -5,7 +5,7 @@
     "node": "16.17.1"
   },
   "private": true,
-  "proxy": "https://cen4010-pms-frontend.herokuapp.com",
+  "proxy": "https://cen4010-pms-backend.herokuapp.com/api",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",

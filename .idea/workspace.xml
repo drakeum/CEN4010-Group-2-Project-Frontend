@@ -45,7 +45,7 @@
       <updated>1668887492758</updated>
       <workItem from="1668888141095" duration="16000" />
       <workItem from="1668888680939" duration="2781000" />
-      <workItem from="1668918079956" duration="1021000" />
+      <workItem from="1668918079956" duration="1384000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1668889845518</created>
@@ -82,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668918644368</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="changed package.json file">
+      <created>1668919271348</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1668919271348</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

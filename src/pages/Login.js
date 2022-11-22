@@ -23,12 +23,13 @@ function Login()
             reader.read().then(({value})=>
             {
                 const str = new TextDecoder("utf-8").decode(value);
+                const strJ = JSON.parse(str);
                 if(str == null)
                 {
                     return;
                 }
-                localStorage.setItem('jwtToken', str)
-                console.log("Token is: ", str)
+                localStorage.setItem('jwtToken', strJ.token)
+                console.log("Token is: ", strJ.token)
             });
         })
     }

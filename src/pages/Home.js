@@ -62,7 +62,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 function Home() {       /*main function that holds the others for creating the POST and the actual html of the page.*/
     //const [test, setTest] = useState([]);
     const test = 'Testing';
-    const accessToken = localStorage.getItem('jwtToken');
+    const accessToken = 'Bearer' + localStorage.getItem('jwtToken');
     const apiUrl = 'http://localhost:3000/';
 
     const authAxios = axios.create({
@@ -103,7 +103,8 @@ function Home() {       /*main function that holds the others for creating the P
      function getProperties(properties) {
         fetch("https://cen4010-pms-backend.herokuapp.com/api/cuser/getProperties", {
             method: "GET",
-            headers: { 'Authorization': 'Basic ' + localStorage.getItem('jwtToken') },
+            headers: { "Content-Type": "application/json",
+                'Authorization': accessToken },
             body: JSON.stringify(properties)
         }).then((json) => {
             if (json.ok)

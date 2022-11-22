@@ -101,7 +101,17 @@ function Home() {       /*main function that holds the others for creating the P
         console.log("The " + name + " Button was pressed.")
     }
 
-
+     function getProperties(properties) {
+        fetch("https://cen4010-pms-backend.herokuapp.com/api/cuser/getProperties", {
+            method: "GET",
+            headers: { 'Authorization': 'Basic ' + localStorage.getItem('jwtToken') },
+            body: JSON.stringify(properties)
+        }).then((json) => {
+            if (json.ok)
+                console.log("Success!")
+            console.log(json)
+        }).catch(error => console.log(error))
+    }
 
     function HomeDiv() {    /*This function holds the html of the page, gotta edit this to make it look nice. AppBar is the navbar, main holds the main content*/
 
@@ -122,6 +132,7 @@ function Home() {       /*main function that holds the others for creating the P
         const [openAdmin, setOpenAdmin] = React.useState(false);
         const handleClickOpenAdmin = () => {
             setOpenAdmin(true);
+            getProperties();
         };
         const CAForm = useRef(null)
         const handleCloseAdmin = (e) => {

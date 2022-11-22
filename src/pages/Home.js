@@ -2,7 +2,6 @@
 import { AppBar, CssBaseline, Typography, Toolbar, Container, alpha, styled, InputBase, Grid, Button, Stack, Avatar, AvatarGroup} from "@mui/material";
 import { useEffect, useState } from "react";
 import { Component, useRef } from 'react';
-import "../styles/Home.css";
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import ComplexGrid from "./ComplexGrid";

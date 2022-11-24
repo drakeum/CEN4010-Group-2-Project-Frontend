@@ -9,7 +9,7 @@ const Img = styled('img')({
     maxHeight: '100%',
 });
 
-export default function ComplexGrid() {
+export default function ComplexGrid(creationDate, name) {
 
     const [openRemove, setOpenRemove] = React.useState(false);
 
@@ -62,13 +62,13 @@ export default function ComplexGrid() {
                     <Grid item xs container direction="column" spacing={2}>
                         <Grid item xs>
                             <Typography gutterBottom variant="subtitle1" component="div">
-                                Property Name
+                                {name}
                             </Typography>
                             <Typography variant="body2" gutterBottom>
                                 Address or Description
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
-                                Property ID or Date uploaded
+                                {creationDate}
                             </Typography>
                         </Grid>
                         <Grid item>

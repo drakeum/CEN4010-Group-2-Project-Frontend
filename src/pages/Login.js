@@ -4,11 +4,9 @@ import "../styles/Login.css";
 
 function Login()
 {
-    const paperStyle = {padding: '50px 20px', width: 600, margin:'20px auto'}
 
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
-    const[name, setName] = useState('');
 
     function login(user)
     {

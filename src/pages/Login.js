@@ -4,11 +4,9 @@ import "../styles/Login.css";
 
 function Login()
 {
-    const paperStyle = {padding: '50px 20px', width: 600, margin:'20px auto'}
 
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
-    const[name, setName] = useState('');
 
     function login(user)
     {
@@ -23,12 +21,13 @@ function Login()
             reader.read().then(({value})=>
             {
                 const str = new TextDecoder("utf-8").decode(value);
+                const strJ = JSON.parse(str);
                 if(str == null)
                 {
                     return;
                 }
-                localStorage.setItem('jwtToken', str)
-                console.log("Token is: ", str)
+                localStorage.setItem('jwtToken', strJ.token)
+                console.log("Token is: ", strJ.token)
             });
         })
     }

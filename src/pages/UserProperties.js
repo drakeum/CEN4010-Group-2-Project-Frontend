@@ -1,5 +1,5 @@
 //import { Box, Button, Container, Paper, TextField, ThemeProvider } from "@mui/material"; /*import for material ui stuffs*/
-import { Typography, Grid, Button, IconButton, Stack, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Paper } from "@mui/material";
+import { Typography, Grid, Button, IconButton, Stack, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Paper, Link } from "@mui/material";
 import { useRef, useState, useEffect } from 'react';
 import React from 'react'
 import AddIcon from '@mui/icons-material/Add';
@@ -168,7 +168,7 @@ const UserProperties = () => {
                                             <Stack direction="row">
                                                 <CottageIcon />
                                                 <Typography gutterBottom variant="subtitle1" component="div" sx={{ml: 1}}>
-                                                {property.name}
+                                                <Link href= {`/Property_Page/${property.id}`}> {property.name} </Link>
                                             </Typography>
                                             </Stack>
                                             <Typography variant="body2" gutterBottom>

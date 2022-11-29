@@ -188,7 +188,7 @@ const UserProperties = () => {
                                         <Stack direction="row">
                                             <CottageIcon />
                                             <Typography gutterBottom variant="subtitle1" component="div" sx={{ ml: 1 }}>
-                                                <Link href={`/Property_Page/${property.id}`}> {property.name} </Link>
+                                                <Link href={`/Property_Page/${property.id}/${property.name}`}> {property.name} </Link>
                                             </Typography>
                                         </Stack>
                                         <Typography variant="body2" gutterBottom>

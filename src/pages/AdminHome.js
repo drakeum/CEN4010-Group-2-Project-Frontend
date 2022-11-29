@@ -1,48 +1,51 @@
-import {  CssBaseline, Container, Stack } from "@mui/material";
+import { CssBaseline, Container, Stack } from "@mui/material";
 import React from 'react'
-import Navbar from './Navbar';
-import UserProperties from './UserProperties';
-import UserProfile from './UserProfile';
+import AdminNavbar from './AdminNavbar';
+import AdminProperties from './AdminProperties';
+import AdminProfile from './AdminProfile';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
 
-function Home() {
-    
-     const accessToken = 'Bearer' + localStorage.getItem("jwtToken");
+
+
+
+function AdminHome() {
+
+    const accessToken = 'Bearer' + localStorage.getItem("jwtToken");
 
     let navigate = useNavigate();
 
     useEffect(() => {
-        if (localStorage.getItem("jwtToken") === "undefined")
-            navigate('/')
-
         fetch("https://cen4010-pms-backend.herokuapp.com/api/cuser/getRole", {
             method: "GET",
             headers: { 'Authorization': accessToken }
         })
             .then(res => res.json())
             .then((result) => {
-                if (result[0] === "ROLE_ADMIN")
-                    navigate('/AdminHome')
-            });
+                if (result[0] !== "ROLE_ADMIN")
+                    navigate('/')
+        });
+
+        if (localStorage.getItem("jwtToken") === "undefined")
+            navigate('/')
     }, []);
 
-    function HomeDiv() {
+    function AdminHomeDiv() {
 
         return (
-                <div>
+            <div>
                 <CssBaseline />
-                <Navbar />
+                <AdminNavbar />
                 <main>
                     <div>
                         <Stack direction="row">
                             <Container maxWidth="lg">
-                                <UserProperties />
+                                <AdminProperties />
                             </Container>
 
                             <Container maxWidth="sm">
                                 <Stack>
-                                   <UserProfile />
+                                    <AdminProfile />
                                 </Stack>
                             </Container>
                         </Stack>
@@ -54,9 +57,9 @@ function Home() {
 
     }
     return (
-        HomeDiv()
+        AdminHomeDiv()
     );
 
 }
 
-export default Home;
+export default AdminHome;

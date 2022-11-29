@@ -132,9 +132,8 @@ const UserProfile = () => {
                 <Typography variant="h2" align="center" color="textPrimary" gutterBottom>Your Profile</Typography>
                 <Stack direction="row">
                     <Stack display="flex" sx={{ justifyContent: "center" }}>
-                        <Avatar display="flex" alt="User First name" src=""  sx={{ height: 256, width: 256, justifyContent: "center"}} />
-                        <Typography variant="paragraph" align="center" color="textPrimary" gutterBottom>Username: {user.username}</Typography>
-                        <Typography variant="paragraph" align="center" color="textPrimary" gutterBottom>Email: {user.email}</Typography>
+                        <Typography variant="h4" align="left" color="textPrimary" gutterBottom>Username: {user.username}</Typography>
+                        <Typography variant="h4" align="left" color="textPrimary" gutterBottom>Email: {user.email}</Typography>
                     </Stack>
                 </Stack>
                 <Button onClick={handleClickOpenEditUser}><EditIcon /> Edit Profile</Button>

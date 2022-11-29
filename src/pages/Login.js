@@ -100,7 +100,7 @@ function Login() {
                 </Box>
                 </div>
 
-                <div id="Edit User Profile Dialog">
+                <div id="Register User Dialog">
                 <Dialog open={open} onClose={handleCloseRegister}>
                     <DialogTitle>Create Your Profile</DialogTitle>
                     <DialogContent>

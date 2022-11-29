@@ -1,5 +1,5 @@
 //import { Box, Button, Container, Paper, TextField, ThemeProvider } from "@mui/material"; /*import for material ui stuffs*/
-import { Typography, Grid, Button, IconButton, Stack, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Paper } from "@mui/material";
+import { Typography, Grid, Button, IconButton, Stack, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Paper, Link } from "@mui/material";
 import { useRef, useState, useEffect } from 'react';
 import React from 'react'
 import AddIcon from '@mui/icons-material/Add';
@@ -12,11 +12,24 @@ const UserProperties = () => {
 
     const accessToken = 'Bearer' + localStorage.getItem("jwtToken");
 
+    const [userRole, setUserRole] = useState([])
+
     const [properties, setProperties] = useState([])
+    const [sharedProperties, setSharedProperties] = useState([])
 
     const [currPid, setCurrPid] = useState([])
 
     useEffect(() => {
+        fetch("https://cen4010-pms-backend.herokuapp.com/api/cuser/getRole", {
+            method: "GET",
+            headers: { 'Authorization': accessToken }
+        })
+            .then(res => res.json())
+            .then((result) => {
+                setUserRole(result)
+                console.log(userRole)
+            });
+
         fetch("https://cen4010-pms-backend.herokuapp.com/api/cuser/getProperties", {
             method: "GET",
             headers: { 'Authorization': accessToken }
@@ -24,9 +37,21 @@ const UserProperties = () => {
             .then(res => res.json())
             .then((result) => {
                 setProperties(result)
+                if (properties == [])
+                    console.log("Empty!")
             })
             .catch(err => {
                 console.log(err)
+                setProperties([1, 2, 3])
+            });
+
+        fetch("https://cen4010-pms-backend.herokuapp.com/api/cuser/getSharedProperties", {
+            method: "GET",
+            headers: { 'Authorization': accessToken }
+        })
+            .then(res => res.json())
+            .then((result) => {
+                setSharedProperties(result)
             });
     }, []);
 
@@ -90,6 +115,7 @@ const UserProperties = () => {
             const data = [form["propertyName"].value, form["propertyValue"].value]
             console.log(data)
             editProperty(form["propertyName"].value, form["propertyValue"].value, pid)
+            getProperties()
         }
         setOpenEdit(false);
     };
@@ -109,21 +135,41 @@ const UserProperties = () => {
         setOpenRemove(false);
     };
 
+
+    function getProperties() {
+        fetch("https://cen4010-pms-backend.herokuapp.com/api/cuser/getProperties", {
+            method: "GET",
+            headers: { 'Authorization': accessToken }
+        })
+            .then(res => res.json())
+            .then((result) => {
+                setProperties(result)
+                if (properties == [])
+                    console.log("Empty!")
+            })
+            .catch(err => {
+                console.log(err)
+                setProperties([1, 2, 3])
+            });
+    }
+
     function formatDate(date) {
-        const formattedDate = date.substring(5,7) + "/" + date.substring(8,10) + "/" + date.substring(0,4)
+        const formattedDate = date.substring(5, 7) + "/" + date.substring(8, 10) + "/" + date.substring(0, 4)
         return formattedDate;
     }
 
+    const paperTest = useRef(null)
     return (
         <>
-            <Stack direction="row" sx={{my: 1}}>
+            <Stack direction="row" sx={{ my: 1 }}>
                 <Typography variant="h2" align="center" color="textPrimary" gutterBottom>Your Properties</Typography>
-                <Button variant="contained" size="medium" align="right" sx={{ml: 5}} onClick={handleClickOpenAdd}><AddIcon/> Add Property</Button>
+                <Button variant="contained" size="medium" align="right" sx={{ ml: 5 }} onClick={handleClickOpenAdd}><AddIcon /> Add Property</Button>
             </Stack>
-            <Stack>
-                    {properties.map(property => (
-                        <Paper
-                            sx={{
+            <Stack ref={paperTest}>
+                {properties.map(property => (
+                    <Paper
+                        
+                        sx={{
                             p: 2,
                             margin: 'auto',
                             maxWidth: 500,
@@ -131,39 +177,78 @@ const UserProperties = () => {
                             flexGrow: 1,
                             backgroundColor: (theme) =>
                             theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-                            mb: 1
-                            }}
-                        >
-                            <Grid container spacing={2}>
-                                
-                                <Grid item xs={12} sm container>
-                                    <Grid item xs container direction="column" spacing={2}>
-                                        <Grid item xs>
-                                            <Stack direction="row">
-                                                <CottageIcon />
-                                                <Typography gutterBottom variant="subtitle1" component="div" sx={{ml: 1}}>
-                                                {property.name}
+                            mb: 1,
+                        }}
+                    >
+                        <Grid container spacing={2}>
+
+                            <Grid item xs={12} sm container>
+                                <Grid item xs container direction="column" spacing={2}>
+                                    <Grid item xs>
+                                        <Stack direction="row">
+                                            <CottageIcon />
+                                            <Typography gutterBottom variant="subtitle1" component="div" sx={{ ml: 1 }}>
+                                                <Link href={`/Property_Page/${property.id}`}> {property.name} </Link>
                                             </Typography>
-                                            </Stack>
-                                            <Typography variant="body2" gutterBottom>
-                                                Value: ${property.itemValue.toFixed(2)}
-                                            </Typography>
-                                            <Typography variant="body2" color="text.secondary">
-                                                {formatDate(property.creationDate)}
-                                            </Typography>
-                                        </Grid>
-                                        <Grid item>
-                                            <Button onClick={() => handleClickEditOpen(property.id)}><EditIcon />Edit</Button>
-                                        </Grid>
+                                        </Stack>
+                                        <Typography variant="body2" gutterBottom>
+                                            Value: ${property.itemValue.toFixed(2)}
+                                        </Typography>
+                                        <Typography variant="body2" color="text.secondary">
+                                            {formatDate(property.creationDate)}
+                                        </Typography>
                                     </Grid>
                                     <Grid item>
-                                        <IconButton onClick={() => handleClickRemoveOpen(property.id)} color="error" aria-label="Remove"><RemoveCircleIcon /></IconButton>
+                                        <Button onClick={() => {
+                                            handleClickEditOpen(property.id)
+                                            property.forceUpdate()
+                                        }}><EditIcon />Edit</Button>
                                     </Grid>
                                 </Grid>
-                            </Grid> 
-                        </Paper>
-                    ))}
-                
+                                <Grid item>
+                                    <IconButton onClick={() => handleClickRemoveOpen(property.id)} color="error" aria-label="Remove"><RemoveCircleIcon /></IconButton>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Paper>
+                ))}
+                <Typography variant="h4" align="center" color="textPrimary" gutterBottom>Shared Properties: {sharedProperties.length}</Typography>
+                {sharedProperties.map(property => (
+                    <Paper
+                        sx={{
+                            p: 2,
+                            margin: 'auto',
+                            maxWidth: 500,
+                            minWidth: 500,
+                            flexGrow: 1,
+                            backgroundColor: (theme) =>
+                                theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+                            mb: 1
+                        }}
+                    >
+                        <Grid container spacing={2}>
+
+                            <Grid item xs={12} sm container>
+                                <Grid item xs container direction="column" spacing={2}>
+                                    <Grid item xs>
+                                        <Stack direction="row">
+                                            <CottageIcon />
+                                            <Typography gutterBottom variant="subtitle1" component="div" sx={{ ml: 1 }}>
+                                                {property.name}
+                                            </Typography>
+                                        </Stack>
+                                        <Typography variant="body2" gutterBottom>
+                                            Value: ${property.itemValue.toFixed(2)}
+                                        </Typography>
+                                        <Typography variant="body2" color="text.secondary">
+                                            {formatDate(property.creationDate)}
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Paper>
+                ))}
             </Stack>
 
             <div id="Add New Property Dialog">
@@ -222,29 +307,29 @@ const UserProperties = () => {
                     <DialogTitle>Edit Property</DialogTitle>
                     <DialogContent>
                         <form ref={EditForm}>
-                        <Grid>
-                            <Grid item>
-                                <TextField
-                                    autoFocus
-                                    margin="dense"
-                                    id="propertyName"
-                                    label="Property Name"
-                                    type="text"
-                                    fullWidth
-                                    variant="standard"
-                                />
-                                <TextField
-                                    autoFocus
-                                    margin="dense"
-                                    id="propertyValue"
-                                    label="Value"
-                                    type="number"
-                                    fullWidth
-                                    variant="standard"
-                                />
+                            <Grid>
+                                <Grid item>
+                                    <TextField
+                                        autoFocus
+                                        margin="dense"
+                                        id="propertyName"
+                                        label="Property Name"
+                                        type="text"
+                                        fullWidth
+                                        variant="standard"
+                                    />
+                                    <TextField
+                                        autoFocus
+                                        margin="dense"
+                                        id="propertyValue"
+                                        label="Value"
+                                        type="number"
+                                        fullWidth
+                                        variant="standard"
+                                    />
+                                </Grid>
                             </Grid>
-                            </Grid>
-                            </form>
+                        </form>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleEditClose}>Cancel</Button>

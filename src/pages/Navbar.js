@@ -39,7 +39,7 @@ const Navbar = () => {
                     <DialogTitle>Contact Admin</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
-                            For questions or concerns, please email that admin: admin@outlook.com.
+                            For questions or concerns, please email the admin: admin@outlook.com.
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
